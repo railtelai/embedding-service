@@ -6,7 +6,7 @@ from clientservices.models import (
     MistralEmbeddingUsageModel,
 )
 from clientservices.workers import GetMistralApiKey
-from enums import ResponseEnums
+from enums import MistralResponseEnums
 
 
 mistralClient = Mistral(api_key=GetMistralApiKey())
@@ -39,13 +39,12 @@ class MistralEmbeddingService(MistralEmbeddingImpl):
                 data=data,
                 usage=usage,
                 id=res.id,
-                status=ResponseEnums.SUCCESS,
+                status=MistralResponseEnums.SUCCESS,
             )
 
         except models.HTTPValidationError as e:
             print(e)
-            return MistralEmbeddingResponseModel(status=ResponseEnums.VALIDATION_ERROR)
+            return MistralEmbeddingResponseModel(status=MistralResponseEnums.VALIDATION_ERROR)
         except models.SDKError as e:
             print(e)
-
-            return MistralEmbeddingResponseModel(status=ResponseEnums.SERVER_ERROR)
+            return MistralEmbeddingResponseModel(status=MistralResponseEnums.SERVER_ERROR)

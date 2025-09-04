@@ -1,3 +1,3 @@
-from .ResponseEnums import ResponseEnum
+from .ResponseEnums import MistralResponseEnums
 
-__all__ = ["ResponseEnum"]
+__all__ = ["MistralResponseEnums"]

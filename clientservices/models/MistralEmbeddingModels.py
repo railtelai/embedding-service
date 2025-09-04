@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from enums import ResponseEnums
+from enums import MistralResponseEnums
 
 
 class MistralEmbeddingUsageModel(BaseModel):
@@ -14,7 +14,7 @@ class MistralEmbeddingDataModel(BaseModel):
 
 
 class MistralEmbeddingResponseModel(BaseModel):
-    status: ResponseEnums = ResponseEnums.SUCCESS
+    status: MistralResponseEnums = MistralResponseEnums.SUCCESS
     id: str | None = None
     model: str | None = None
     usage: MistralEmbeddingUsageModel | None = None
